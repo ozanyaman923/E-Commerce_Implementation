@@ -1,13 +1,13 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Concrete
 {
-    // Repositoryde bunların temeli (GetAll) var ancak burada onlarla daha detaylısını icra edebilirsin.
     public class ProductManager : IProductService 
     {
         IProductDal _productDal;
@@ -31,9 +31,9 @@ namespace Business.Concrete
             return _productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max);
         }
 
-        public List<Product> GetByUnitQuery()
+        public List<ProductDetailDto> GetProductDetails()
         {
-            return _productDal.GetAll().OrderBy(p => p.UnitPrice).ToList();
+            return _productDal.GetProductDetails();
         }
     }
 }

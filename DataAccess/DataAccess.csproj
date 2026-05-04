@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj" />
+    <Compile Remove="Concrete\InMemory\**" />
+    <EmbeddedResource Remove="Concrete\InMemory\**" />
+    <None Remove="Concrete\InMemory\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\InMemory\" />
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
   <ItemGroup>

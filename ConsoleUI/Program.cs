@@ -10,10 +10,21 @@ namespace MyApp
         static void Main(string[] args)
         {
             IProductService productService = new ProductManager(new EfProductDal());
-            foreach (var product in productService.GetByUnitQuery())
+            //foreach (var product in productService.GetByUnitQuery())
+            //{
+            //    Console.WriteLine(product.ProductName + " ------- " + product.UnitPrice);
+            //}
+            //ICategoryService categoryService = new CategoryManager(new EfCategoryDal());
+            //foreach (var category in categoryService.GetAll())
+            //{
+            //    Console.WriteLine(category.CategoryName);
+            //}
+            
+            foreach (var i in productService.GetProductDetails())
             {
-                Console.WriteLine(product.ProductName + " ------- " + product.UnitPrice);
+                Console.WriteLine(i.ProductName + i.CategoryName);
             }
+
         }
     }
 } 
