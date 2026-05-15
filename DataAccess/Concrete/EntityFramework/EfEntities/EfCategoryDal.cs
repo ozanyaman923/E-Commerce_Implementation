@@ -59,9 +59,6 @@ namespace DataAccess.Concrete.EntityFramework.EfEntities
             throw new NotImplementedException();
         }
 
-        List<Category> IEntityRepository<Category>.GetAllByCategory(int entityId)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
