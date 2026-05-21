@@ -4,6 +4,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
@@ -21,20 +22,30 @@ namespace Business.Concrete
                 _productDal = productDal;
         }
 
+        // [LogAspect] / [Validate] / [Remove Cache] [Transaction] [Performance] AOP aspect oriented programming
+
         public IResult Add(Product product)
         {
             // magic strings              
             if (product.ProductName.Length < 2)
             {
+                
                 return new ErrorResult(Messages.ProductNameInvalid);
             }
+            
+            
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
         }
 
         public IDataResult<List<Product>> GetAll()
         {
+            //if (DateTime.Now.Hour == 22)
+            //{
+            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            //}
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed);
+
         }
             
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
@@ -54,13 +65,17 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
-            if (DateTime.Now.Hour == 15)
+            if (DateTime.Now.Hour == 18)
             {
                 return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
             }
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails());
         }
 
-        
+        public IResult Remove(Product product)
+        {
+            _productDal.Delete(product);
+            return new SuccessResult(Messages.ProductRemoved);
+        }
     }
 }
