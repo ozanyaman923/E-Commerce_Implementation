@@ -40,6 +40,18 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpDelete("delete")]
+
+        [HttpGet("getByPrice")]
+        public IActionResult GetByPrice(int minPrice, int maxPrice)
+        {
+            var result = _productService.GetByUnitPrice(minPrice, maxPrice);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         public IActionResult Delete(Product product)
         {
             var result = _productService.Remove(product);

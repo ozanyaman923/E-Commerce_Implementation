@@ -15,50 +15,7 @@ namespace DataAccess.Concrete.EntityFramework.EfEntities
     {
 
 
-        public void Add(Category entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Category entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Category Get(Expression<Func<Category, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Product> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Category> GetAll(Expression<Func<Category, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Product> GetAllByCategory(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Category entity)
-        {
-            throw new NotImplementedException();
-        }
+        
 
     }
 }
