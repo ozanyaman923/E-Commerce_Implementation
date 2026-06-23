@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -31,7 +32,7 @@ namespace Business.Concrete
         }
 
         // [LogAspect] / [Validate] / [Remove Cache] [Transaction] [Performance] AOP aspect oriented programming
-
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {

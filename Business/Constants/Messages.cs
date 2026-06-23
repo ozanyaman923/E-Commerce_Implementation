@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,5 +18,14 @@ namespace Business.Constants
         public static string ProductRemoved ="ürün silindi" ;
 
         public static string ProductCountOfCategoryError ="Kategoriye ait ürün sayısı 10'u geçemez";
+
+        public static string AuthorizationDenied = "Yetkiniz yok";
+
+        public static string UserRegistered= "Kullanıcı kayıt oldu";
+        public static User UserNotFound = null;
+        public static User PasswordError = null;
+        public static string SuccessfulLogin = "Giriş başarılı";
+        public static string UserAlreadyExists = "Kullanıcı zaten mevcut";
+        public static string AccessTokenCreated = "Erişim tokenı oluşturuldu";
     }
 }
