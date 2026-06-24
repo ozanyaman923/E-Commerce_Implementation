@@ -1,0 +1,17 @@
+# Ignore build artifacts and editor folders
+**/bin/
+**/obj/
+bin/
+obj/
+.vs/
+.idea/
+.vscode/
+.git/
+*.db
+*.log
+*.user
+*.suo
+*.pdb
+docker-compose*.yml
+Dockerfile
+**/*.Dockerfile

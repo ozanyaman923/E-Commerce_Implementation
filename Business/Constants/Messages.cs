@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,11 +22,14 @@ namespace Business.Constants
 
         public static string AuthorizationDenied = "Yetkiniz yok";
 
-        public static string UserRegistered= "Kullanıcı kayıt oldu";
-        public static User UserNotFound = null;
-        public static User PasswordError = null;
+        public static string UserRegistered = "Kullanıcı kayıt oldu";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Parola hatalı";
+        public static string PasswordCannotBeEmpty = "Parola boş olamaz";
         public static string SuccessfulLogin = "Giriş başarılı";
         public static string UserAlreadyExists = "Kullanıcı zaten mevcut";
         public static string AccessTokenCreated = "Erişim tokenı oluşturuldu";
+
+      
     }
 }
