@@ -18,7 +18,6 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    // İş kuralları, başarılı veya bundan daha sorunlu denilen yer
     public class ProductManager : IProductService
     {
         IProductDal _productDal;
@@ -36,16 +35,17 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
-            IResult result = BusinessRules.Run
-                (CheckIfProductCountOfCategoryCorrect(product.CategoryId),
+            IResult result = BusinessRules.Run(
+                
                  CheckIfNameAlreadyExists(product.ProductName));
 
 
-            if (!result.Success)
+            if (result !=null)
             {
                 return result;
             }
-            return new ErrorResult(Messages.ProductCountOfCategoryError);
+            _productDal.Add(product);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
         public IDataResult<List<Product>> GetAll()

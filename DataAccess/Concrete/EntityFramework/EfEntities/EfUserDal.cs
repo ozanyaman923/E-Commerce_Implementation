@@ -4,6 +4,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.DataBase;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework.EfEntities
@@ -12,6 +13,8 @@ namespace DataAccess.Concrete.EntityFramework.EfEntities
     {
         public List<OperationClaim> GetClaims(User user)
         {
+            if (user == null) throw new ArgumentNullException(nameof(user));
+
             using (var context = new NorthwindContext())
             {
                 var result = from operationClaim in context.OperationClaims
