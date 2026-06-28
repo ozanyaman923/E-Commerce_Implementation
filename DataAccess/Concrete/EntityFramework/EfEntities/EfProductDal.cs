@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework.EfEntities
 {
     public class EfProductDal : EfEntityRepositoryBase<Product, NorthwindContext>, IProductDal // Data Access Layer
     {
-        public List<ProductDetailDto> GetProductDetails()
+        public async Task<List<ProductDetailDto>> GetProductDetailsAsync()
         {
             using (NorthwindContext context = new NorthwindContext())
             {
@@ -27,7 +27,7 @@ namespace DataAccess.Concrete.EntityFramework.EfEntities
                                  CategoryName = c.CategoryName,
                                  UnitsInStock = p.UnitsInStock
                              };
-                return result.ToList();
+                return await result.ToListAsync();
             }
         }
     }

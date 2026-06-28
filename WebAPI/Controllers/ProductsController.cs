@@ -21,9 +21,9 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("getAll")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var result = _productService.GetAll();
+            var result = await _productService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -31,9 +31,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpGet("getById")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var result = _productService.GetById(id);
+            var result = await _productService.GetByIdAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -43,9 +43,9 @@ namespace WebAPI.Controllers
         [HttpDelete("delete")]
 
         [HttpGet("getByPrice")]
-        public IActionResult GetByPrice(int minPrice, int maxPrice)
+        public async Task<IActionResult> GetByPrice(int minPrice, int maxPrice)
         {
-            var result = _productService.GetByUnitPrice(minPrice, maxPrice);
+            var result = await _productService.GetByUnitPriceAsync(minPrice, maxPrice);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        public IActionResult Delete(Product product)
+        public async Task<IActionResult> Delete(Product product)
         {
-            var result = _productService.Remove(product);
+            var result = await _productService.RemoveAsync(product);
             if (result.Success)
             {
                 return Ok(result);
@@ -64,9 +64,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]  
-        public IActionResult Post(Product product)
+        public async Task<IActionResult> Post(Product product)
         {
-            var result = _productService.Add(product);
+            var result = await _productService.AddAsync(product);
             if (result.Success)
             {
                 return Ok(result);

@@ -21,15 +21,14 @@ namespace Business.Concrete
             return _userDal.GetClaims(user);
         }
 
-        public void Add(User user)
+        public async Task AddAsync(User user)
         {
-            _userDal.Add(user);
+            await _userDal.AddAsync(user);
         }
 
-        public User GetByMail(string email)
+        public async Task<User> GetByMailAsync(string email)
         {
-            
-            return _userDal.Get(u => u.Email == email);
+            return await _userDal.GetAsync(u => u.Email == email);
         }
     }
 }

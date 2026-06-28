@@ -13,14 +13,14 @@ namespace Business.Concrete
         ICategoryDal _categoryDal;
         
 
-        IDataResult<List<Category>> ICategoryService.GetAll()
+        async Task<IDataResult<List<Category>>> ICategoryService.GetAllAsync()
         {
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
+            return new SuccessDataResult<List<Category>>(await _categoryDal.GetAllAsync());
         }
 
-        IDataResult<Category> ICategoryService.GetById(int categoryId)
+        async Task<IDataResult<Category>> ICategoryService.GetByIdAsync(int categoryId)
         {
-            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.CategoryId == categoryId));
+            return new SuccessDataResult<Category>(await _categoryDal.GetAsync(c => c.CategoryId == categoryId));
         }
     }
 }
