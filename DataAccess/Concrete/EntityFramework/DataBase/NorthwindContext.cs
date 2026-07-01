@@ -11,7 +11,7 @@ namespace DataAccess.Concrete.EntityFramework.DataBase
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=New Database;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=NewDatabase;Trusted_Connection=true");
 
         }
 
@@ -26,4 +26,3 @@ namespace DataAccess.Concrete.EntityFramework.DataBase
 
     }
 }
-    

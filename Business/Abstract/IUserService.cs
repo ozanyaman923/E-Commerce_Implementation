@@ -7,7 +7,7 @@ namespace Business.Abstract
 {
     public interface IUserService
     {
-        Task<OperationClaim> GetClaimsAsync(User user);
+        Task<List<OperationClaim>> GetClaimsAsync(User user);
         Task AddAsync(User user);
         Task<User> GetByMailAsync(string email);
     }

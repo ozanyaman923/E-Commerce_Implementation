@@ -1,36 +1,43 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿
+using Core.Utilities.IoC;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Microsoft.Extensions.DependencyInjection;
 namespace Core.CCS.Caching.Microsoft
 {
     public class MemoryCacheMaanger : ICacheManager
     {
         IMemoryCache _memoryCache;
+            
+        public MemoryCacheMaanger()
+        {
+            _memoryCache = ServiceTool.ServiceProvider.GetService<IMemoryCache>();
+        }
         public void Add(string key, object value, int duration)
         {
-            throw new NotImplementedException();
+            _memoryCache.Set(key, value, TimeSpan.FromMinutes(duration));
         }
 
         public T Get<T>(string key)
         {
-            throw new NotImplementedException();
+           return _memoryCache.Get<T>(key);
         }
 
         public object Get(string key)
         {
-            throw new NotImplementedException();
-        }
+            return _memoryCache.Get(key);
+        }   
 
-        public void IsAdd(string key)
+        public bool IsAdd(string key)
         {
-            throw new NotImplementedException();
+            return _memoryCache.TryGetValue(key, out _);
         }
 
         public void Remove(string key)
         {
-            throw new NotImplementedException();
+             _memoryCache.Remove(key);
         }
 
         public void RemoveByPattern(string pattern)

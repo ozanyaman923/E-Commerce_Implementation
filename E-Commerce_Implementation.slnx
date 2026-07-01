@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="docker-compose.yml" />
+  </Folder>
   <Project Path="Business/Business.csproj" />
   <Project Path="ConsoleUI/ConsoleUI.csproj" />
   <Project Path="Core/Core.csproj" Id="def788b2-4c08-4ecb-a6cf-3acc87adf8e4" />

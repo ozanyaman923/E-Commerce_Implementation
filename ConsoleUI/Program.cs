@@ -9,19 +9,7 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            IProductService productManager = new ProductManager(new EfProductDal(),new CategoryManager());
-            var result = productManager.GetProductDetails();
-            if(result.Success ) 
-            {
-                foreach (var product in result.Data)
-                {
-                    Console.WriteLine(product.ProductName+ "/"+ product.CategoryName);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+           
         }
     }
 } 

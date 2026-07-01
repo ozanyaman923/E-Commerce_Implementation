@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFramework.EfEntities
 {
     public class EfUserDal : EfEntityRepositoryBase<User, NorthwindContext>, IUserDal
     {
-        public List<OperationClaim> GetClaims(User user)
+        public async Task<List<OperationClaim>> GetClaimsAsync(User user)
         {
             if (user == null) throw new ArgumentNullException(nameof(user));
 
@@ -23,7 +23,7 @@ namespace DataAccess.Concrete.EntityFramework.EfEntities
                                  on operationClaim.Id equals userOperationClaim.OperationClaimId
                              where userOperationClaim.UserId == user.Id
                              select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
-                return result.ToList();
+                return await result.ToListAsync();
 
             }   
         }

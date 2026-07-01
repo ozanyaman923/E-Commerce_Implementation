@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   webapi:
     build:
@@ -8,3 +7,18 @@ services:
       - "8080:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+
+  postgresdb:
+    image: postgres:15-alpine
+    container_name: ecommerce_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=ozanyaman
+      - POSTGRES_PASSWORD=ozan923923
+      - POSTGRES_DB=NewDatabase
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
